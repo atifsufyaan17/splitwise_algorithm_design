@@ -16,30 +16,38 @@ typedef long long ll;
 const ll mod=1000000007;
 #define ios ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
 using namespace std;
+
 int main() {
     ios
-    ll transactions,amount=0,no_of_transactions=0; cin>>transactions;
+    ll transactions=0,amount=0,no_of_transactions=0; cin>>transactions;
     unordered_map<string,ll> m;
     string u,v;
+
     loop(i,0,transactions){
         cin>>u>>v>>amount;  
+
         if(m.find(u)==m.end()){
             m[u]=0;
         }
         if(m.find(v)==m.end()){
             m[v]=0;
         }
+
         m[u]-=amount;
         m[v]+=amount;
     }
+
     multiset< pair<ll,string> > st;
+
     for(auto i:m){
         string name = i.first;
         ll netAmount = i.second;
+
         if(netAmount!=0){
             st.insert(mp(netAmount,name));
         }
     }
+
     while(!st.empty()){
         auto debit = st.begin();
         ll debitAmt = (*debit).first;
@@ -67,5 +75,6 @@ int main() {
         cout<<debitName<<" will pay "<<settledAmt<<" to "<<creditName<<endl;
         no_of_transactions++;
     }
+    
     cout<<no_of_transactions<<endl;
 }
