@@ -75,6 +75,6 @@ int main() {
         cout<<debitName<<" will pay "<<settledAmt<<" to "<<creditName<<endl;
         no_of_transactions++;
     }
-    
-    cout<<no_of_transactions<<endl;
+
+    cout<<"No of transactions = "<<no_of_transactions<<endl;
 }
